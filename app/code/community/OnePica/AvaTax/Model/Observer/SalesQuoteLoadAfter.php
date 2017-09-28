@@ -33,7 +33,7 @@ class OnePica_AvaTax_Model_Observer_SalesQuoteLoadAfter extends OnePica_AvaTax_M
     public function execute(Varien_Event_Observer $observer)
     {
         $storeId = $observer->getEvent()->getQuote()->getStoreId();
-        if (Mage::registry('avatax_store_id')) {
+        if (!is_null(Mage::registry('avatax_store_id'))) {
             Mage::unregister('avatax_store_id');
         }
 
